@@ -2,7 +2,7 @@ class LogTextFile:
     def __int__(self, fileName, info, father = None):
         self.fileName = fileName
         self.father = father
-        self.info = info
+        self.info = []
     def delete(self):
         return
     def move(self, path):

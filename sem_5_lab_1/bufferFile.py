@@ -1,5 +1,5 @@
 class BufferFile:
-    def __init__(self, fileName, father = None, maxSize = 0):
+    def __init__(self, fileName, maxSize = 0, father = None):
         self.fileName = fileName
         self.father = father
         self.info = []
