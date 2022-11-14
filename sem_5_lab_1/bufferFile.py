@@ -11,4 +11,4 @@ class BufferFile:
     def push(self, item):
         return
     def consume(self):
-        return
+        return None

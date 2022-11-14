@@ -41,7 +41,7 @@ class TestingBinaryFile:
     def test_binaryFileMove(self):
         name = 'binary2'
         info = 'kdvjiviufsvvffush'
-        binaryFile = BinaryFile(name, info, self.fatherDirectory)
+        binaryFile = BinaryFile(name, info)
         assert type(binaryFile.father) is NoneType
         binaryFile.move(self.fatherDirectory)
         assert binaryFile.father == self.fatherDirectory
@@ -54,7 +54,8 @@ class TestingLogTextFile:
     fatherDirectory = Directory('fatherDirectory3')
     def test_logFileCreate(self):
         name = 'log1'
-        logTextFile = LogTextFile(name, self.fatherDirectory)
+        info = ''
+        logTextFile = LogTextFile(name, info, self.fatherDirectory)
         assert logTextFile.fileName == name
         assert logTextFile.read() == ''
         assert logTextFile.father == self.fatherDirectory
@@ -72,7 +73,7 @@ class TestingLogTextFile:
         name = 'log4'
         info = 'info'
         logFile = LogTextFile(name, info)
-        assert logFile.read() == info
+        assert logFile.read() == 'info'
         logFile.appendNewLine('new line')
         assert 'line' in logFile.read()
 class TestingBufferFile:

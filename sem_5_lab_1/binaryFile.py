@@ -3,9 +3,16 @@ class BinaryFile:
         self.fileName = fileName
         self.info = info
         self.father = father
-    def delete(self):
+    def __del__(self):
+        print('Destructor called, ' + self.fileName + 'was deleted')
         return
     def move(self, path):
+        if(path.numberOfElements >= path.DIR_MAX_ELEMS + 1):
+            print('This directory is full, try other')
+            return
+        self.father = path
+        self.father.listOfFiles.append(self)
+        self.father.numberOfElements += 1
         return
     def read(self):
-        return
+        return self.info

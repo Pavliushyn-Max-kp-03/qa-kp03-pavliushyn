@@ -1,13 +1,14 @@
 class LogTextFile:
-    def __int__(self, fileName, info, father = None):
+    def __init__(self, fileName, info, father = None):
         self.fileName = fileName
         self.father = father
-        self.info = []
+        self.info = info
     def delete(self):
         return
     def move(self, path):
         return
     def read(self):
-        return
+        return self.info
     def appendNewLine(self, newLine):
-        return
+        self.info += newLine
+        self.info += '\n'
