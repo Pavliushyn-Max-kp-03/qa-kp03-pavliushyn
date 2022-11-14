@@ -61,12 +61,14 @@ class TestingLogTextFile:
         assert logTextFile.father == self.fatherDirectory
     def test_logFileMove(self):
         name = 'log2'
-        logFile = LogTextFile(name)
+        info = ''
+        logFile = LogTextFile(name, info)
         assert type(logFile.father) is NoneType
         logFile.move(self.fatherDirectory)
         assert logFile.father == self.fatherDirectory
     def test_logFileDel(self):
-        logTextFile = LogTextFile('log3')
+        info = ''
+        logTextFile = LogTextFile('log3', info)
         del logTextFile
         assert 'logTextFile' not in locals()
     def test_logFileAddLine(self):

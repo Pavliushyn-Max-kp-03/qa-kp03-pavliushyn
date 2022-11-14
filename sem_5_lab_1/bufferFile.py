@@ -4,11 +4,25 @@ class BufferFile:
         self.father = father
         self.info = []
         self.MAX_BUF_FILE_SIZE = maxSize
-    def delete(self):
+    def __del__(self):
+        print('Destructor called', + self.fileName + 'was deleted')
         return
     def move(self, path):
+        if (path.numberOfElements >= path.DIR_MAX_ELEMS + 1):
+            print('This directory is full, try other')
+            return
+        self.father = path
+        self.father.listOfFiles.append(self)
+        self.father.numberOfElements += 1
         return
     def push(self, item):
-        return
+        if len(self.info) >= self.MAX_BUF_FILE_SIZE:
+            print('This file is full with items')
+            return
+        self.info.append(item)
     def consume(self):
+        if len(self.info) >= 1:
+            temp = self.info[0]
+            self.info.pop(0)
+            return temp
         return None
