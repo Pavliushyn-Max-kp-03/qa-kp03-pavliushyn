@@ -33,5 +33,5 @@ print(logTextFile2.read())
 bufferFile1 = BufferFile('buf1', 5, root)
 bufferFile2 = BufferFile('buf2', 3, directory1)
 print(type(root.listOfFiles))
-print(root.listOfFiles)
+print(root.listElements())
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
