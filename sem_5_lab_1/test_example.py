@@ -1,7 +1,6 @@
 def test_func():
     print(5)
 from types import NoneType
-from array import array
 from directory import Directory
 from binaryFile import BinaryFile
 from logTextFile import LogTextFile
@@ -105,7 +104,6 @@ class TestingBufferFile:
         element1 = 'e1'
         element2 = 'e2'
         bufferFile.push(element1)
-        #bufferFile.push(element1)
         bufferFile.push(element2)
         assert bufferFile.consume() == element1
         assert bufferFile.consume() == element2

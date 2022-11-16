@@ -4,7 +4,7 @@ class BufferFile:
         self.father = father
         self.info = []
         self.MAX_BUF_FILE_SIZE = maxSize
-    def __del__(self):
+    def __delete__(self):
         print('Destructor called', + self.fileName + 'was deleted')
         return
     def move(self, path):

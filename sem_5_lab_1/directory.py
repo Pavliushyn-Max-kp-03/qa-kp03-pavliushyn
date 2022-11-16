@@ -5,11 +5,11 @@ class Directory:
         self.DIR_MAX_ELEMS = maxElements
         self.numberOfElements = 0
         self.listOfFiles = []
-    def __del__(self):
+    def __delete__(self):
         print('Destructor called, ' + self.dirName + 'was deleted')
         return
     def listElements(self):
-        result = self.dirName + ':('
+        result= self.dirName + ':('
         for item in self.listOfFiles:
            if type(item) is Directory:
                result += item.listElements()
