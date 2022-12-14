@@ -17,7 +17,6 @@ class TestingDir:
         assert directory.numberOfElements == 0
         assert directory.dirName == name
         assert type(directory.father) is NoneType
-        #assert type(directory.listOfFiles) is str
     def test_directoryMove(self):
         directory = Directory('directory1')
         assert type(directory.father) is NoneType

@@ -20,6 +20,7 @@ root = Directory('root', 100)
 directory1 = Directory('child1', 20, root)
 directory2 = Directory('child2', 3, root)
 directory3 = Directory('chchild', 10, directory1)
+dir = Directory('dir', 6, directory1)
 
 binaryFile1 = BinaryFile('binFile1', 'info1', root)
 binaryFile2 = BinaryFile('binFile2', 'info2', directory3)
@@ -34,4 +35,5 @@ bufferFile1 = BufferFile('buf1', 5, root)
 bufferFile2 = BufferFile('buf2', 3, directory1)
 print(type(root.listOfFiles))
 print(root.listElements())
+
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
