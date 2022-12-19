@@ -6,8 +6,9 @@ app = Flask(__name__)
 # ‘/’ URL is bound with hello_world() function.
 def hello_world():
     return 'Hello World1'
-
+    a = response.status_code
+    print(a)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
