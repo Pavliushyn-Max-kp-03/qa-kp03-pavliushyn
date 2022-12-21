@@ -1,8 +1,9 @@
 class BinaryFile:
-    def __init__(self, fileName, info = None, father = None):
+    def __init__(self, id, fileName, info = None, father = None):
         self.fileName = fileName
         self.info = info
         self.father = father
+        self.id = id
     def __delete__(self):
         print('Destructor called, ' + self.fileName + 'was deleted')
         return
