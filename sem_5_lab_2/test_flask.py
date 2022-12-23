@@ -217,3 +217,11 @@ def test_directory_create():
     assert check_existance_response.status_code == 200
     data = check_existance_response.text
     print(data)
+
+def test_binFiles():
+    response = app.test_client().get('/binaryFiles')
+    res = json.loads(response.data.decode('utf-8')).get("binFiles")
+    assert type(res[0]) is dict
+    assert res[0]['fileName'] == 'binFile2'
+    assert response.status_code == 200
+    assert type(res) is list
