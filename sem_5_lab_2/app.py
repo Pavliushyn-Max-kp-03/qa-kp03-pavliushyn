@@ -86,7 +86,7 @@ def get_task(file_id):
     file = list(filter(lambda t: t['id'] == file_id, binFiles))
     if len(file) == 0:
         abort(404)
-    return jsonify({'task': file[0]}), 302
+    return jsonify({'file': file[0]}), 302
 @app.errorhandler(404)
 def not_found(error):
     return jsonify({'error': 'Not found'}), 404
@@ -113,7 +113,7 @@ def create_bin():
         'father': None
     }
     binFiles.append(file)
-    return jsonify({'task': file}), 201
+    return jsonify({'file': file}), 201
 @app.route('/binaryFile_move/<int:file_id>', methods=['PUT'])
 def update_bin(file_id):
     file = list(filter(lambda t: t['id'] == file_id, binFiles))
@@ -137,7 +137,7 @@ def create_log():
         'father': None
     }
     logFiles.append(file)
-    return jsonify({'task': file}), 201
+    return jsonify({'file': file}), 201
 @app.route('/logFile_move/<int:file_id>', methods=['PUT'])
 @app.route('/logFile_append/<int:file_id>', methods=['PUT'])
 def update_log(file_id):
@@ -161,7 +161,7 @@ def get_log(file_id):
     file = list(filter(lambda t: t['id'] == file_id, logFiles))
     if len(file) == 0:
         abort(404)
-    return jsonify({'task': file[0]})
+    return jsonify({'file': file[0]})
 @app.route('/logFile_delete/<int:file_id>', methods=['GET', 'DELETE'])
 def delete_log(task_id):
     file = list(filter(lambda t: t['id'] == task_id, logFiles))
@@ -185,7 +185,7 @@ def create_dir():
         'father': None
     }
     directories.append(dir)
-    return jsonify({'task': dir}), 201
+    return jsonify({'dir': dir}), 201
 @app.route('/dir_move/<int:dir_id>', methods=['PUT'])
 def update_dir(dir_id):
     dir = list(filter(lambda t: t['id'] == dir_id, directories))
@@ -257,7 +257,7 @@ def get_buf(file_id):
     file = list(filter(lambda t: t['id'] == file_id, bufFiles))
     if len(file) == 0:
         abort(404)
-    return jsonify({'task': file[0]})
+    return jsonify({'file': file[0]})
 @app.route('/bufFile_delete/<int:task_id>', methods=['GET', 'DELETE'])
 def delete_buf(task_id):
     file = list(filter(lambda t: t['id'] == task_id, bufFiles))

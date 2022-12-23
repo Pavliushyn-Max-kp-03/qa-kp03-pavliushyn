@@ -112,3 +112,108 @@ def test_directory_pages():
         assert response.status_code == 404
         response = test_client.get('/directory_move')
         assert response.status_code == 404
+def test_binaryfile_create():
+    ENDPOINT = "http://127.0.0.1:5000/binaryFile_create/binaryFiles"
+    response = requests.get(ENDPOINT)
+
+    payload = {
+        "fileName": "test"
+    }
+    response = requests.post(ENDPOINT, json=payload)
+    data = response.text
+    print(data)
+
+    file_id = "3"
+    check_existance_response = requests.get(f"http://127.0.0.1:5000/binaryFile_read/{file_id}")
+    assert check_existance_response.status_code == 302
+    data = check_existance_response.text
+    print(data)
+
+def test_binary_delete():
+    file_id = "2"
+    ENDPOINT = f"http://127.0.0.1:5000/binaryFile_delete/{file_id}"
+    response = requests.post(ENDPOINT)
+
+    check_existance_response = requests.get(f"http://127.0.0.1:5000/binaryFile_read/{file_id}")
+    assert check_existance_response.status_code == 302      #redirect
+    data = check_existance_response.text
+    print(data)
+
+def test_binary_move():
+    file_id = "2"
+    ENDPOINT = f"http://127.0.0.1:5000/binaryFile_move/{file_id}"
+    payload = {
+        "father": "tdir"
+    }
+    response = requests.post(ENDPOINT, json=payload)
+
+    check_existance_response = requests.get(f"http://127.0.0.1:5000/binaryFile_read/{file_id}")
+    assert check_existance_response.status_code == 302  # redirect
+    data = check_existance_response.text
+    print(data)
+
+def test_bufferfile_create():
+    ENDPOINT = "http://127.0.0.1:5000/bufFile_create/bufFiles"
+    response = requests.get(ENDPOINT)
+
+    payload = {
+        "fileName": "tbuf"
+    }
+    response = requests.post(ENDPOINT, json=payload)
+    data = response.text
+    print(data)
+
+    file_id = "3"
+    check_existance_response = requests.get(f"http://127.0.0.1:5000/bufFile_read/{file_id}")
+    assert check_existance_response.status_code == 200
+    data = check_existance_response.text
+    print(data)
+def test_buffer_add():
+    file_id = "2"
+    ENDPOINT = f"http://127.0.0.1:5000/bufFile_push/{file_id}"
+    payload = {
+        "maxSize": 11
+    }
+    response = requests.post(ENDPOINT, json=payload)
+
+    check_existance_response = requests.get(f"http://127.0.0.1:5000/bufFile_read/{file_id}")
+    assert check_existance_response.status_code == 200
+    data = check_existance_response.text
+    print(data)
+def test_bufferfile_delete():
+    file_id = "1"
+    ENDPOINT = f"http://127.0.0.1:5000/bufFile_delete/{file_id}"
+    response = requests.post(ENDPOINT)
+
+    check_existance_response = requests.get(f"http://127.0.0.1:5000/bufFile_read/{file_id}")
+    assert check_existance_response.status_code == 200
+    data = check_existance_response.text
+    print(data)
+def test_buffer_move():
+    file_id = "2"
+    ENDPOINT = f"http://127.0.0.1:5000/bufFile_move/{file_id}"
+    payload = {
+        "father": "bufdir"
+    }
+    response = requests.post(ENDPOINT, json=payload)
+
+    check_existance_response = requests.get(f"http://127.0.0.1:5000/bufFile_read/{file_id}")
+    assert check_existance_response.status_code == 200  # redirect
+    data = check_existance_response.text
+    print(data)
+def test_directory_create():
+    ENDPOINT = "http://127.0.0.1:5000/dir_create/directories"
+    response = requests.get(ENDPOINT)
+
+    payload = {
+        "dirName": "testdir"
+    }
+    response = requests.post(ENDPOINT, json=payload)
+    data = response.text
+    print(data)
+
+    dir_id = "3"
+    check_existance_response = requests.get(f"http://127.0.0.1:5000/dir_read/{dir_id}")
+    assert check_existance_response.status_code == 200
+    data = check_existance_response.text
+    print(data)
