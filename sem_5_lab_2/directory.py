@@ -1,6 +1,6 @@
 class Directory:
     from bufferFile import BufferFile
-    def __init__(self, dirName, maxElements = 0, father = None):
+    def __init__(self, id, dirName, maxElements = 0, father = None):
         self.father = father
         if self.father != None:
             self.father.numberOfElements += 1
@@ -9,6 +9,7 @@ class Directory:
         self.DIR_MAX_ELEMS = maxElements
         self.numberOfElements = 0
         self.listOfFiles = []
+        self.id = id
     def __delete__(self):
         print('Destructor called, ' + self.dirName + 'was deleted')
         return

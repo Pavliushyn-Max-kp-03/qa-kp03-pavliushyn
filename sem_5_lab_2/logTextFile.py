@@ -1,8 +1,9 @@
 class LogTextFile:
-    def __init__(self, fileName, info, father = None):
+    def __init__(self, id, fileName, info, father = None):
         self.fileName = fileName
         self.father = father
         self.info = info
+        self.id = id
     def __delete__(self):
         print('Destructor called', + self.fileName + 'was deleted')
         return

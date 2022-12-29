@@ -1,9 +1,10 @@
 class BufferFile:
-    def __init__(self, fileName, maxSize = 0, father = None):
+    def __init__(self, id, fileName, maxSize = 0, father = None):
         self.fileName = fileName
         self.father = father
         self.info = []
         self.MAX_BUF_FILE_SIZE = maxSize
+        self.id = id
     def __delete__(self):
         print('Destructor called', + self.fileName + 'was deleted')
         return
