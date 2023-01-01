@@ -91,7 +91,7 @@ def delete_bin(file_id):
     return jsonify({'result': True})
 
 
-@app.route('/binaryFile_create/binaryFiles', methods=['POST'])
+@app.route('/binaryFile_create/binaryFiles', methods=['GET', 'POST'])
 def create_bin():
     if not request.json or not 'fileName' in request.json:
         abort(400)
@@ -103,7 +103,7 @@ def create_bin():
     }
     binFiles.append(file)
     return jsonify({'file': file}), 201
-@app.route('/binaryFile_move/<int:file_id>', methods=['PUT'])
+@app.route('/binaryFile_move/<int:file_id>', methods=['GET', 'PUT'])
 def update_bin(file_id):
     file = list(filter(lambda t: t['id'] == file_id, binFiles))
     if len(file) == 0:
@@ -159,14 +159,14 @@ def delete_log(task_id):
     logFiles.remove(file[0])
     return jsonify({'result': True})
 ###################################################
-@app.route('/dir_create/directories', methods=['POST'])
+@app.route('/dir_create/directories', methods=['GET', 'POST'])
 def create_dir():
     if not request.json or not 'dirName' in request.json:
         abort(400)
     dir = {
         'id': directories[-1]['id'] + 1,
         'dirName': request.json['dirName'],
-        'maxElements': bufFiles[-1]['id'] - 5,
+        'maxElements': bufFiles[-1]['id'] + 5,
         'father': None
     }
     directories.append(dir)
@@ -202,7 +202,7 @@ def delete_dir(dir_id):
     directories.remove(dir[0])
     return jsonify({'result': True})
 ########################################################
-@app.route('/bufFile_create/bufFiles', methods=['POST'])
+@app.route('/bufFile_create/bufFiles', methods=['GET', 'POST'])
 def create_buf():
     if not request.json or not 'fileName' in request.json:
         abort(400)
