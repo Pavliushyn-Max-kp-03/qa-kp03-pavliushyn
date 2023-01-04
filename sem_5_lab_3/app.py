@@ -25,7 +25,7 @@ logFiles = [
     },
     {
         'id': 2,
-        'title': u'logFile2',
+        'fileName': u'logFile2',
         'info': u'info2',
         'father': 'directory1'
     }
@@ -127,8 +127,8 @@ def create_log():
     }
     logFiles.append(file)
     return jsonify({'file': file}), 201
-@app.route('/logFile_move/<int:file_id>', methods=['PUT'])
-@app.route('/logFile_append/<int:file_id>', methods=['PUT'])
+@app.route('/logFile_move/<int:file_id>', methods=['GET', 'PUT'])
+@app.route('/logFile_append/<int:file_id>', methods=['GET', 'PUT'])
 def update_log(file_id):
     file = list(filter(lambda t: t['id'] == file_id, logFiles))
     if len(file) == 0:
@@ -152,8 +152,8 @@ def get_log(file_id):
         abort(404)
     return jsonify({'file': file[0]})
 @app.route('/logFile_delete/<int:file_id>', methods=['GET', 'DELETE'])
-def delete_log(task_id):
-    file = list(filter(lambda t: t['id'] == task_id, logFiles))
+def delete_log(file_id):
+    file = list(filter(lambda t: t['id'] == file_id, logFiles))
     if len(file) == 0:
         abort(404)
     logFiles.remove(file[0])
